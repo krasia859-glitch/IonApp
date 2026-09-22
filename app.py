@@ -15,7 +15,9 @@ with col2:
 st.write("Ваш персональный интеллектуальный ассистент с доступом к сети.")
 
 st.sidebar.header("🔑 Настройки API")
-api_key = st.sidebar.text_input("API-ключ OpenRouter", type="password")
+api_key = st.secrets.get("OPENROUTER_API_KEY") or st.sidebar.text_input(
+    "API-ключ OpenRouter", type="password"
+)
 base_url = st.sidebar.text_input(
     "Базовый URL", value="https://openrouter.ai/api/v1"
 )
